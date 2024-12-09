@@ -1,19 +1,20 @@
 import { calculateInvestmentResults, formatter } from '../../util/investment'
 import { InvestmentData } from '../../types/investment'
+import { memo } from 'react'
+import styles from './Result.module.css'
 
 interface ResultProps {
 	investmentData: InvestmentData
 }
 
-const Result = ({ investmentData }: ResultProps) => {
+const Result = memo(({ investmentData }: ResultProps) => {
 	let resultsData = null
 
 	try {
 		resultsData = calculateInvestmentResults(investmentData)
 	} catch (error: unknown) {
 		return (
-			<section style={{ margin: '2rem auto', textAlign: 'center' }}>
-				{' '}
+			<section className={styles.center}>
 				<h1>Something went wrong!</h1>
 				{error instanceof Error
 					? error.message
@@ -23,14 +24,14 @@ const Result = ({ investmentData }: ResultProps) => {
 	}
 
 	return (
-		<table id='result'>
+		<table className={styles.resultTable} role="grid" aria-label="Investment Results">
 			<thead>
 				<tr>
-					<th>Year</th>
-					<th>Total Capital Invested</th>
-					<th>Interest (Year)</th>
-					<th>Total Interest</th>
-					<th>Investment Value</th>
+					<th scope="col">Year</th>
+					<th scope="col">Total Capital Invested</th>
+					<th scope="col">Interest (Year)</th>
+					<th scope="col">Total Interest</th>
+					<th scope="col">Investment Value</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -46,6 +47,6 @@ const Result = ({ investmentData }: ResultProps) => {
 			</tbody>
 		</table>
 	)
-}
+})
 
 export default Result

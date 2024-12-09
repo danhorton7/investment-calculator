@@ -1,0 +1,29 @@
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.actions button {
+  width: 100%;
+  max-width: 20rem;
+  padding: 0.75rem 2rem;
+  border: 2px solid #83e6c0;
+  border-radius: 0.5rem;
+  background: linear-gradient(180deg, #1f584b, #17493d);
+  color: #83e6c0;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.actions button:hover {
+  background: linear-gradient(180deg, #1b4d41, #134134);
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(131, 230, 192, 0.3);
+}

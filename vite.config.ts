@@ -3,5 +3,12 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+	plugins: [react()],
+	esbuild: {
+		drop: ['console', 'debugger'],
+		legalComments: 'none',
+		minifyIdentifiers: true,
+		minifySyntax: true,
+		minifyWhitespace: true,
+	},
 })

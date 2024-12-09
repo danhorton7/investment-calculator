@@ -6,7 +6,21 @@ interface ResultProps {
 }
 
 const Result = ({ investmentData }: ResultProps) => {
-	const resultsData = calculateInvestmentResults(investmentData)
+	let resultsData = null
+
+	try {
+		resultsData = calculateInvestmentResults(investmentData)
+	} catch (error: unknown) {
+		return (
+			<section style={{ margin: '2rem auto', textAlign: 'center' }}>
+				{' '}
+				<h1>Something went wrong!</h1>
+				{error instanceof Error
+					? error.message
+					: 'An unexpected error occurred'}
+			</section>
+		)
+	}
 
 	return (
 		<table id='result'>
